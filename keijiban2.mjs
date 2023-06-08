@@ -21,8 +21,13 @@ http.createServer(async(req,res) =>{
         <section>
             <h2>新規投稿</h2>
             <form action = "http://10.1.188.1:5000" method = "post">
-                <label for = "name">コメントを残す（１００文字以内）：</label>
+                <label for = "name">コメントを残す（１０文字以内）：</label>
                 <input type = "text" name = "comment" value = "">
+                <input type = "submit" value = "投稿">
+            </form>
+            <form action = "http://10.1.188.1:5000" method = "get">
+                <label for = "name">コメントを残す（１０文字以内）：</label>
+                <label type = "text" name = "comment" value = "">
                 <input type = "submit" value = "投稿">
             </form>
         </section>
@@ -37,4 +42,10 @@ http.createServer(async(req,res) =>{
         body: JSON.stringify(data)
     })
 
+    fetch('http://10.1.188.1:5000',{
+        method: 'get',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+    })
 }).listen(8000);
